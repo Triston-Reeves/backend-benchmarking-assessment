@@ -10,7 +10,7 @@ for an arbitrary list of strings.
 
 # Your name here, and any other people/sources who helped.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Triston Reeves/Corbin Creech"
 
 import sys
 
@@ -21,17 +21,13 @@ def alphabetize(string):
 
 
 def find_anagrams(words):
-    """
-    Returns a dictionary with keys that are alphabetized words and values
-    that are all words that, when alphabetized, match the key.
-    Example:
-    {'dgo': ['dog'], 'act': ['cat', 'act']}
-    """
-    anagrams = {
-        alphabetize(word): [
-            w for w in words
-            if alphabetize(w) == alphabetize(word)]
-        for word in words}
+    anagrams = {}
+    for word in words:
+        if alphabetize(word) in anagrams:
+            anagrams[alphabetize(word)] += [word]
+        else:
+            anagrams[alphabetize(word)] = [word]
+    print(anagrams)
     return anagrams
 
 
